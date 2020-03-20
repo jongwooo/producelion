@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 
@@ -10,12 +12,42 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="{% static 'css/common.css' %}">
+
   <title>{% block title %}{% endblock %} | PRODUCE LION</title>
 </head>
 
-<body>
-  {% block content %}
-  {% endblock %}
+<body id="top" class>
+  <div id="container">
+    <main role="main">
+      <header>
+        <div class="inner-wrap">
+          <h1><a href="/">PRODUCE 101 JAPAN</a></h1>
+          <div id="nav-container">
+            <div id="nav-wrap">
+              <div id="nav-overlay"></div>
+            </div>
+            <nav id="nav-fullscreen">
+              <ul id="nav-menu">
+                <li><a href="/"><span>홈</span></a></li>
+                <li><a href="#"><span>로그인</span></a></li>
+                <li><a href="#"><span>회원가입</span></a></li>
+                <li><a href="#"><span>투표하기</span></a></li>
+              </ul>
+            </nav>
+            <a id="nav-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </header>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -28,6 +60,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
+
+  <!-- TOP SLIDER BANNER -->
+  <script src="{% static 'js/common.js' %}"></script>
 </body>
 
 </html>
