@@ -12,15 +12,21 @@ def login(request):
       auth.login(request, user)
       return redirect('home')
     else:
-      return render(request, 'account/login.html', {'error': '아이디와 비밀번호를 확인해주세요.'})
+      return render(request, 'account/login.html', {'error': '사용자 이름과 비밀번호를 확인해주세요.'})
   else:
     return render(request, 'account/login.html')
 
 def signup(request):
   if request.method == 'POST':
-    if request.POST['password'] == request.POST['confirm']:
-      user = User.objects.create_user(
-        request.POST['username'], password=request.POST['password'])
+    username = request.POST['username']
+    password = request.POST['password']
+    confirm = request.POST['confirm']
+
+    if username == "" or password == "" or confirm == "":
+      return render(request, "account/signup.html", {'error': '폼을 모두 채워주세요.'})
+
+    if password == confirm:
+      user = User.objects.create_user(username, password=password)
       auth.login(request, user)
       return redirect('home')
     else:
