@@ -31,9 +31,14 @@
             <nav id="nav-fullscreen">
               <ul id="nav-menu">
                 <li><a href="/"><span>홈</span></a></li>
-                <li><a href="/account/login"><span>로그인</span></a></li>
-                <li><a href="/account/signup"><span>회원가입</span></a></li>
-                <li><a href="/vote/list"><span>투표하기</span></a></li>
+                {% if not user.is_authenticated %}
+                <li><a href="{% url 'login' %}"><span>로그인</span></a></li>
+                <li><a href="{% url 'signup' %}"><span>회원가입</span></a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'vote' %}"><span>투표하기</span></a></li>
+                <li><a href="{% url 'logout' %}"><span>로그아웃</span></a></li>
+                {% endif %}
               </ul>
             </nav>
             <a id="nav-toggle">
@@ -44,8 +49,14 @@
           </div>
         </div>
       </header>
-      {% block content %}
-      {% endblock %}
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 center-align">
+            {% block content %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 
