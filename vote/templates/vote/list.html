@@ -3,6 +3,29 @@
 {% block title %}
 투표하기
 {% endblock %}
-
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{%url 'complete'%}" method="POST">
+        {% csrf_token %}
+        <table border="1">
+            <th></th>
+            {%for profile in picks.all%}
+                <td>
+                {{profile.name}}<br>
+                {{profile.management}}<br>
+                <input type="radio" value = {{profile.name}} name = "pick"><br>
+                </td>
+            {%endfor%}
+        </table>
+        <input type="submit" value="투표하기" >
+    </form>
+</body>
+</html>
 {% endblock %}
