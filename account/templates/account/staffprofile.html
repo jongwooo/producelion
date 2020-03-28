@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-투표하기
+프로필 작성
 {% endblock %}
 {% block content %}
 <!DOCTYPE html>
@@ -12,10 +12,18 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{%url 'complete'%}" method="POST">
+    <form enctype="multipart/form-data" action="{%url 'saveprofile'%}" method="POST">
         {% csrf_token %}
-        
-        <input type="submit" value="투표하기" >
+        <input type="File" name = "image" onchange="checkSize(this)">
+        <input type="text" name = "name">
+        <input type="text" name = "management"><br>
+        <select name="team">
+            <option value="">==팀 선택==</option>
+            <option value="A">== A ==</option>
+            <option value="B">== B ==</option>
+            <option value="C">== C ==</option>
+        </select>
+        <input type="submit" value="프로필 변경" >
     </form>
 </body>
 </html>
