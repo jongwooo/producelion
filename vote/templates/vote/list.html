@@ -18,6 +18,7 @@
             <th></th>
             {%for profile in picks.all%}
                 <td>
+                <img src="{{profile.image.url}}" height=100><br>
                 {{profile.name}}<br>
                 {{profile.management}}<br>
                 <input type="radio" value = {{profile.name}} name = "pick"><br>
