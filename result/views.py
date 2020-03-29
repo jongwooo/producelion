@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from vote.models import VoteList
 
 def result(request):
-    return render(request,'result/result.html')
+    votes = VoteList.objects
+    return render(request,'result/result.html',{'votes':votes})

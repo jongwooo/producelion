@@ -1,1 +1,40 @@
-결과
+{% extends 'base.html' %}
+
+{% block title %}
+결과보기
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{%url 'home'%}" method="POST">
+        {% csrf_token %}
+        A<br>
+        {%for vote in votes.all %}
+        {%if vote.team == "Ateam"%}
+        {{vote.myname}}
+        {%endif%}
+        {%endfor%}
+        <br>B<br>
+        {%for vote in votes.all %}
+        {%if vote.team == "Bteam"%}
+        {{vote.myname}}
+        {%endif%}
+        {%endfor%}
+        <br>C<br>
+        {%for vote in votes.all %}
+        {%if vote.team == "Cteam"%}
+        {{vote.myname}}
+        {%endif%}
+        {%endfor%}
+        <br>
+        <input type="submit" value="home">
+    </form>
+</body>
+</html>
+{% endblock %}
