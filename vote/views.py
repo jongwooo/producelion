@@ -13,12 +13,15 @@ def complete(request):
       myvote = VoteList()
       myvote.user = request.user
       myvote.myname = request.user.username
-      myvote.name = request.POST.get('pick')
+      myvote.team = request.POST.get('pick')
       myvote.votenum += 1
       myvote.save()
     else:
       obj = VoteList.objects.get(user = request.user)
-      obj.name = request.POST.get('pick')
-      obj.votenum += 1
-      obj.save()
+      if obj.lastteam == request.POST.get('pick'):
+        return render(request,"vote/error.html",{'error':'저번주와 같은팀은 선택할 수 없습니다.'})
+      else:
+        obj.team = request.POST.get('pick')
+        obj.votenum += 1
+        obj.save()
     return render(request,"vote/complete.html")
