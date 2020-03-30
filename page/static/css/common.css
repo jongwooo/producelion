@@ -1,15 +1,21 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Slabo+27px&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
 
 html,
 body {
   height: 100%;
-  font-family: 'Yeon Sung', cursive;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
-
+table,td{
+  border: 2px solid #1c6bd1;
+}
+table{
+  margin-left: auto;
+  margin-right: auto;
+}
 
 @media all and (-ms-high-contrast:none) {
   body {
