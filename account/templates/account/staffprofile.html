@@ -4,14 +4,6 @@
 프로필 작성
 {% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
     <form enctype="multipart/form-data" action="{%url 'saveprofile'%}" method="POST" style="margin-top: 10%; margin-left: 30%;">
         {% csrf_token %}
         <input type="File" name = "image" onchange="checkSize(this)"><br><br>
@@ -25,6 +17,4 @@
         </select>
         <input type="submit" value="프로필 변경" >
     </form>
-</body>
-</html>
 {% endblock %}

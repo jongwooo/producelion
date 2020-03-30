@@ -1,18 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 프로필 저장 완료
 {% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>저장완료</h1>
-</body>
-</html>
+    <img src="{% static 'images\프로필등록.jpg' %}" alt="등록이 완료되었습니다." width="95%">
 {% endblock %}
