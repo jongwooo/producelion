@@ -19,7 +19,7 @@ def complete(request):
     else:
       obj = VoteList.objects.get(user = request.user)
       if obj.lastteam == request.POST.get('pick'):
-        return render(request,"vote/error.html",{'error':'저번주와 같은팀은 선택할 수 없습니다.'})
+        return render(request,"vote/error.html")
       else:
         obj.team = request.POST.get('pick')
         obj.votenum += 1
