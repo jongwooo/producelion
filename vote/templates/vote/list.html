@@ -9,13 +9,13 @@
         <table>
             {%for profile in picks.all%}
                 <td>
-                <img src="{{profile.image.url}}" height=100><br>
-                {{profile.name}}<br>
+                <img src="{{profile.image.url}}" height=100 style="margin-top: 3%;"><br>
+                <span style="color:#074ca7;font-weight: bold;">{{profile.name}}</span><br>
                 {{profile.management}}<br>
                 <input type="radio" value = {{profile.team}} name = "pick"><br>
                 </td>
             {%endfor%}
         </table>
-        <input type="submit" value="투표하기" >
+        <input type="submit" value="투표하기" style="margin-left: 100%/2;">
     </form>
 {% endblock %}
