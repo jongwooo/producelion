@@ -4,43 +4,32 @@
 결과보기
 {% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <script>
     function check(){
         alert("적용되었습니다.");
     }
 </script>
-<body>
     <form action="{%url 'beforeteam'%}" method="POST" onsubmit="return check()">
         {% csrf_token %}
-        A<br>
+        <br><span style="text-align: center; color: #074ca7; font-weight: bold; font-size: large; ">TEAM A</span><br>
         {%for vote in votes.all %}
         {%if vote.team == "A"%}
-        {{vote.myname}}
+        <span style="font-size: small;margin-bottom: 3%;">{{vote.myname}}</span>
         {%endif%}
         {%endfor%}
-        <br>B<br>
+        <br><span style="text-align: center; color: #074ca7; font-weight: bold; font-size: large; ">TEAM B</span><br>
         {%for vote in votes.all %}
         {%if vote.team == "B"%}
-        {{vote.myname}}
+        <span style="font-size: small;margin-bottom: 3%;">{{vote.myname}}</span>
         {%endif%}
         {%endfor%}
-        <br>C<br>
+        <br><span style="text-align: center; color: #074ca7; font-weight: bold; font-size: large; ">TEAM C</span><br>
         {%for vote in votes.all %}
         {%if vote.team == "C"%}
-        {{vote.myname}}
+        <span style="font-size: small;margin-bottom: 3%;">{{vote.myname}}</span>
         {%endif%}
         {%endfor%}
         <br>
-        <input type="submit" value="적용하기">
+        <input type="submit" value="적용하기" style="margin-left: calc(100%/2.5); color: #074ca7; font-weight: bold;border: 1px #074ca7 solid;margin-top: 3%;">
     </form>
-    
-</body>
-</html>
 {% endblock %}

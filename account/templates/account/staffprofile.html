@@ -4,17 +4,18 @@
 프로필 작성
 {% endblock %}
 {% block content %}
-    <form enctype="multipart/form-data" action="{%url 'saveprofile'%}" method="POST" style="margin-top: 10%; margin-left: 30%;">
+    <form enctype="multipart/form-data" action="{%url 'saveprofile'%}" method="POST" 
+    style="margin-top: 10%; margin-left: calc(100%/3.4); margin-right:calc(100%/5);border: rgba(14, 92, 236, 0.541) 10px solid; border-radius: 5px;">
         {% csrf_token %}
         <input type="File" name = "image" onchange="checkSize(this)"><br><br>
-        <span >팀 이름 : </span><input type="text" name = "name"><br><br>
-        <span >팀 소개 : </span><input type="text" name = "management"><br><br>
+        <span style=" font-weight: bold;" > 팀 이름 : </span><input type="text" name = "name"><br><br>
+        <span style=" font-weight: bold;"> 팀 소개 : </span><input type="text" name = "management"><br><br>
         <select name="team">
-            <option value="">==팀 선택==</option>
-            <option value="A">== A ==</option>
-            <option value="B">== B ==</option>
-            <option value="C">== C ==</option>
+            <option value="" style="font-weight: bold;">== 팀 선택 ==</option>
+            <option value="A" >== A ==</option>
+            <option value="B" >== B ==</option>
+            <option value="C" >== C ==</option>
         </select>
-        <input type="submit" value="프로필 변경" >
+        <input type="submit" value="프로필 변경" style=" margin-left:3%;">
     </form>
 {% endblock %}
