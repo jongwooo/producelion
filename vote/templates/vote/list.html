@@ -4,7 +4,7 @@
 투표리스트
 {% endblock %}
 {% block content %}
-    <form action="{%url 'complete'%}" method="POST">
+    <form name = "list" action="{%url 'complete'%}" method="POST" onsubmit="return listsubmit();">
         {% csrf_token %}
             {%for profile in picks.all%}
             <div class="col mb-4">
@@ -22,4 +22,15 @@
         {%endfor%}   
         <input type="submit" value="투표하기" style="margin-left: calc(100%/2.2); color: #074ca7; font-weight: bold;border: 1px #074ca7 solid; margin-bottom: 3%;">
     </form>
+    <script>
+        function listsubmit(){
+            if(list.pick.value==""){
+                alert("소중한 한표 부탁드립니다!");
+                return false;
+            }
+            else{
+                return true;
+            }     
+        }
+    </script>
 {% endblock %}

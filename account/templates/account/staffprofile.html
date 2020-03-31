@@ -4,7 +4,7 @@
 프로필 작성
 {% endblock %}
 {% block content %}
-    <form enctype="multipart/form-data" action="{%url 'saveprofile'%}" method="POST" 
+    <form name = "profile" onsubmit = "return setprofile();"enctype="multipart/form-data" action="{%url 'saveprofile'%}" method="POST" 
     style="margin-top: 10%; margin-left: calc(100%/3.4); margin-right:calc(100%/5);border: rgba(14, 92, 236, 0.541) 10px solid; border-radius: 5px;">
         {% csrf_token %}
         <input type="File" name = "image" onchange="checkSize(this)"><br><br>
@@ -18,4 +18,29 @@
         </select>
         <input type="submit" value="프로필 변경" style=" margin-left:3%;">
     </form>
+    <script>
+        function setprofile(){
+            if(profile.image.value==""){
+                alert("프로필 사진을 넣어주세요!");
+                return false;
+            }
+            else if(profile.name.value==""){
+                alert("팀이름을 입력해주세요!");
+                return false;
+            }
+            else if(profile.management.value==""){
+                alert("팀소개를 입력해주세요!");
+                return false;
+            }
+            else if(profile.team.value==""){
+                alert("팀을 선택해주세요!");
+                return false;
+            }
+            else{
+                alert("프로필 변경 완료!");
+                return true;
+            }
+        }
+    </script>
+
 {% endblock %}

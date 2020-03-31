@@ -27,9 +27,13 @@ def signup(request):
       return render(request, "account/signup.html", {'error': '폼을 모두 채워주세요.'})
 
     if password == confirm:
-      user = User.objects.create_user(username, password=password)
-      auth.login(request, user)
-      return redirect('home')
+      username = request.POST.get('username')
+      try:
+        user = User.objects.create_user(username, password=password)
+        auth.login(request, user)
+        return redirect('home')
+      except:
+        return render(request, "account/signup.html", {'error': '이미 존재하는 아이디입니다.'})
     else:
       return render(request, "account/signup.html", {'error': '비밀번호를 다시 확인해주세요.'})
   return render(request, "account/signup.html")
