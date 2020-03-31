@@ -24,17 +24,13 @@
     </form>
     <script>
         function listsubmit(){
-            var chkRadio = document.getElementsByName('pick');
-            var chk = 0;
-            for(var i=0;i<chkRadio.length;i++){
-                if(chkRadio[i].checked==true){
-                    alert("투표해주셔서 감사합니다!");
-                    chk++;
-                    return true;
-                }
-                else
-                    alert("소중한 한표 부탁드립니다!")
-                    return false;
+            if(list.pick.value!=""){
+                alert("투표해주셔서 감사합니다!");
+                return true;
+            }
+            else{
+                alert("소중한 한표 부탁드립니다!")
+                return false;
             }
         }
     </script>
