@@ -46,22 +46,25 @@ def staffprofile(request):
   return render(request,'account/staffprofile.html')
 
 def saveprofile(request):
-  nowuser = Profile.objects.filter(user=request.user)
-  if not nowuser:
-    myprofile = Profile()
-    myprofile.user = request.user
-    if 'image' in request.FILES:
-      myprofile.image = request.FILES['image']
-    myprofile.name = request.POST['name']
-    myprofile.management = request.POST['management']
-    myprofile.team = request.POST['team']
-    myprofile.save()
-  else:
-    obj = Profile.objects.get(user = request.user)
-    obj.name = request.POST['name']
-    obj.image = request.FILES['image']
-    obj.management = request.POST['management']
-    obj.team = request.POST['team']
-    obj.save()
+  try:
+    nowuser = Profile.objects.filter(user=request.user)
+    if not nowuser:
+      myprofile = Profile()
+      myprofile.user = request.user
+      if 'image' in request.FILES:
+        myprofile.image = request.FILES['image']
+      myprofile.name = request.POST['name']
+      myprofile.management = request.POST['management']
+      myprofile.team = request.POST['team']
+      myprofile.save()
+    else:
+      obj = Profile.objects.get(user = request.user)
+      obj.name = request.POST['name']
+      obj.image = request.FILES['image']
+      obj.management = request.POST['management']
+      obj.team = request.POST['team']
+      obj.save()
+      return render(request,"account/saveprofile.html")
     return render(request,"account/saveprofile.html")
-  return render(request,"account/saveprofile.html")
+  except:
+    return render(request,"account/login.html")

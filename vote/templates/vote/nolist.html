@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+투표에러
+{% endblock %}
+{% block content %}
+    <form action="{%url 'home'%}" method="POST">
+        {% csrf_token %}
+        {%if error %}
+            {{error}}
+        {%endif%}
+        <img src="{% static 'images\오류.jpg' %}" alt="운영진이 프로필 작성중입니다." width="85%">
+    </form>
+{% endblock %}
