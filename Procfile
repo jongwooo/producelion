@@ -1,1 +1,1 @@
-web: gunicorn producelion.wsgi --log-file -
+web: gunicorn config.wsgi --log-file -
